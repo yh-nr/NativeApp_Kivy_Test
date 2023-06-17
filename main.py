@@ -9,6 +9,7 @@ from kivy.properties import StringProperty
 # from kivy.core.text import LabelBase, DEFAULT_FONT
 from kivy.resources import resource_add_path
 from random import randint
+from kivy.uix.boxlayout import BoxLayout
 
 import japanize_kivy
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -53,6 +54,16 @@ class ZebraApp(App):
         return sm
 
 
+class CameraClick(BoxLayout):
+    def capture(self):
+        '''
+        Function to capture the images and give them the names
+        according to their captured time and date.
+        '''
+        camera = self.ids['camera']
+        timestr = time.strftime("%Y%m%d_%H%M%S")
+        camera.export_to_png("IMG_{}.png".format(timestr))
+        print("Captured")
 
 if __name__ == '__main__':
     ZebraApp().run()
