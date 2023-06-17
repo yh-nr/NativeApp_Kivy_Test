@@ -10,7 +10,7 @@ package.name = show.randomimage
 package.domain = com.yh_nr.kivyapps
 
 # (str) Source code where the main.py live
-source.dir = .NativeApp_Kivy_Test
+source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
 source.include_exts = py,png,jpg,kv,atlas

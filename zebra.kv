@@ -1,4 +1,53 @@
-ImageWidget:
+<ScreenManagement>:
+    transition: FadeTransition()
+    Page1:
+    Page2: 
+    
+<Page1>:
+    name: 'Page1'
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+        Button:
+            id: button4
+            text: "ページ切替"
+            font_size: 30
+            on_press: app.root.current = 'Page2'
+
+<Page2>: 
+    name: 'Page2'
+    ImageWidget:
+        id: iw_yakiniku
+        BoxLayout:
+            orientation: 'vertical'
+            size: root.size
+            Label:
+                text:"焼き肉画像ランダム表示アプリ"
+                font_size: 30
+                size_hint_y: 0.3
+            Image:
+                source: iw_yakiniku.source
+            BoxLayout:
+                size_hint_y: 0.3
+                padding: 20,30,20,10
+                
+                Button:
+                    id: button1
+                    text: "初期画像"
+                    font_size: 30
+                    on_press: iw_yakiniku.buttonStarted()
+                Button:
+                    id: button2
+                    text: "ランダム表示"
+                    font_size: 30
+                    on_press: iw_yakiniku.buttonRandom()
+                Button:
+                    id: button3
+                    text: "ページ切替"
+                    font_size: 30
+                    on_press: app.root.current = 'Page1'
+
+
 
 <ImageWidget>:
     canvas.before:
@@ -7,24 +56,3 @@ ImageWidget:
         Rectangle:
             pos: self.pos
             size: self.size
-
-    BoxLayout:
-        orientation: 'vertical'
-        size: root.size
-
-        Image:
-            source: root.source
-
-        BoxLayout:
-            size_hint_y: 0.3
-            padding: 20,30,20,10
-            Button:
-                id: button1
-                text: "はじめの画像に戻る"
-                font_size: 30
-                on_press: root.buttonStarted()
-            Button:
-                id: button2
-                text: "ランダム表示"
-                font_size: 30
-                on_press: root.buttonRandom()
