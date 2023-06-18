@@ -15,6 +15,10 @@ import japanize_kivy
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 
+# カメラへのアクセス許可を要求する
+# from plyer import permission
+# permission.request_permissions([permission.CAMERA])
+
 # デフォルトに使用するフォントを変更する
 # resource_add_path('C:\Windows\Fonts')
 # LabelBase.register(DEFAULT_FONT, 'UDDigiKyokashoN-R.ttc')
