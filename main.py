@@ -16,8 +16,10 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 
 # カメラへのアクセス許可を要求する
-from plyer import permission
-permission.request_permissions([permission.CAMERA])
+from android.permissions import request_permissions, Permission
+request_permissions([
+    Permission.CAMERA
+    ])
 
 # デフォルトに使用するフォントを変更する
 # resource_add_path('C:\Windows\Fonts')
