@@ -73,10 +73,11 @@
                 text: 'Capture'
                 size_hint_y: None
                 height: '48dp'
-                on_press: root.capture()
+                on_press: camera.capture()
         Button:
             id: button4
             text: "ページ切替"
+            size_hint_y: 0.1
             font_size: 30
             on_press: app.root.current = 'Page1'
 
