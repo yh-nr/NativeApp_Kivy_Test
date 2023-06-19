@@ -14,12 +14,17 @@ from kivy.uix.boxlayout import BoxLayout
 import japanize_kivy
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
+import time
 
 # カメラへのアクセス許可を要求する
-from android.permissions import request_permissions, Permission
-request_permissions([
-    Permission.CAMERA
-    ])
+try:
+    from android.permissions import request_permissions, Permission
+    request_permissions([
+        Permission.CAMERA
+        Permission.WRITE_EXTERNAL_STORAGE
+        ])
+except:
+    pass
 
 # デフォルトに使用するフォントを変更する
 # resource_add_path('C:\Windows\Fonts')
@@ -66,7 +71,8 @@ class CameraClick(BoxLayout):
         Function to capture the images and give them the names
         according to their captured time and date.
         '''
-        camera = self.ids['camera']
+        self_wig = Page2()
+        camera = self_wig.ids['camera']
         timestr = time.strftime("%Y%m%d_%H%M%S")
         camera.export_to_png("IMG_{}.png".format(timestr))
         print("Captured")

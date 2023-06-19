@@ -62,15 +62,17 @@
             id:cameraclick
             orientation: 'vertical'
             Camera:
-                id: camera
+                id:camera
                 resolution: (640, 480)
                 play: False
             ToggleButton:
+                id:playb
                 text: 'Play'
                 on_press: camera.play = not camera.play
                 size_hint_y: None
                 height: '48dp'
             Button:
+                id:capb
                 text: 'Capture'
                 size_hint_y: None
                 height: '48dp'
@@ -78,7 +80,7 @@
         Button:
             id: button4
             text: "ページ切替"
-            size_hint_y: 0.1
+            size_hint_y: 0.3
             font_size: 30
             on_press: app.root.current = 'Page1'
 
