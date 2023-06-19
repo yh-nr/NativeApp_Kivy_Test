@@ -59,6 +59,7 @@
                     pos: self.pos
                     size: self.size
         CameraClick:
+            id:cameraclick
             orientation: 'vertical'
             Camera:
                 id: camera
@@ -73,7 +74,7 @@
                 text: 'Capture'
                 size_hint_y: None
                 height: '48dp'
-                on_press: camera.capture()
+                on_press: cameraclick.capture()
         Button:
             id: button4
             text: "ページ切替"
