@@ -15,6 +15,7 @@ import japanize_kivy
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 import time
+import os
 
 # カメラへのアクセス許可を要求する
 try:
@@ -74,7 +75,7 @@ class CameraClick(BoxLayout):
         self_wig = Page2()
         camera = self_wig.ids['camera']
         timestr = time.strftime("%Y%m%d_%H%M%S")
-        camera.export_to_png("IMG_{}.png".format(timestr))
+        camera.export_to_png(os.environ['DIRECTORY_PICTURES']+"/IMG_{}.png".format(timestr))
         print("Captured")
 
 if __name__ == '__main__':
