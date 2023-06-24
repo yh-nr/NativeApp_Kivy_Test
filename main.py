@@ -15,6 +15,7 @@ import japanize_kivy
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 import time
+import os
 
 from jnius import autoclass
 from kivy.support import platform
@@ -82,6 +83,7 @@ class CameraClick(BoxLayout):
         self_wig = Page2()
         camera = self_wig.ids['camera']
         timestr = time.strftime("%Y%m%d_%H%M%S")
+<<<<<<< HEAD
 
         if platform == 'android':
             # AndroidのJavaクラスにアクセス
@@ -98,6 +100,9 @@ class CameraClick(BoxLayout):
                 app_storage_path = Environment.getExternalStorageDirectory().getAbsolutePath()
 
         camera.export_to_png(app_storage_path+"IMG_{}.png".format(timestr))
+=======
+        camera.export_to_png(os.environ['DIRECTORY_PICTURES']+"/IMG_{}.png".format(timestr))
+>>>>>>> 42a0e413ee4be4fda530149545e4d3058c65041d
         print("Captured")
 
 if __name__ == '__main__':
