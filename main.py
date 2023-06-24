@@ -15,10 +15,8 @@ import japanize_kivy
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 import time
-import os
-
-from jnius import autoclass
-from kivy.support import platform
+from sub import savepic
+from kivy.utils import platform
 
 
 
@@ -84,21 +82,7 @@ class CameraClick(BoxLayout):
         camera = self_wig.ids['camera']
         timestr = time.strftime("%Y%m%d_%H%M%S")
 
-        if platform == 'android':
-            # AndroidのJavaクラスにアクセス
-            Environment = autoclass('android.os.Environment')
-            Context = autoclass('android.content.Context')
-            PythonActivity = autoclass('org.kivy.android.PythonActivity')
-
-            # Scoped Storageが使用可能なAndroidバージョンかをチェック
-            if int(Environment.VERSION.SDK_INT) >= 29:
-                # アプリの外部ファイルディレクトリへのパスを取得
-                app_storage_path = PythonActivity.mActivity.getExternalFilesDir(None).getAbsolutePath()
-            else:
-                # Android 9以前の場合、従来のストレージアクセスを利用
-                app_storage_path = Environment.getExternalStorageDirectory().getAbsolutePath()
-
-        camera.export_to_png(app_storage_path+"IMG_{}.png".format(timestr))
+        savepic(camera, timestr)
         print("Captured")
 
 if __name__ == '__main__':
