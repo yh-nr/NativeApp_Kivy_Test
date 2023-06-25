@@ -72,14 +72,14 @@ class CameraClick(BoxLayout):
         timestr = time.strftime("%Y%m%d_%H%M%S")
 
         print(self.camera_ref)
-        savepic(self.camera_ref, timestr)
-        print("Captured")
+        filepath = savepic(self.camera_ref, timestr)
+        print(f"Captured ({filepath})")
 
 
 
 class YakinikuApp(App):
     def __init__(self, **kwargs):
-        super(Zebrav2App, self).__init__(**kwargs)
+        super(YakinikuApp, self).__init__(**kwargs)
         self.title = 'シマウマ画像表示'
 
     # def build(self):

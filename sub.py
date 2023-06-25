@@ -43,5 +43,7 @@ def savepic(camera, timestr):
         # パスを取得
         app_storage_path = buf.value
     
-    print(app_storage_path+"\IMG_{}.png".format(timestr))
-    camera.export_to_png(app_storage_path+"\IMG_{}.png".format(timestr))
+    filepath = app_storage_path+"\IMG_{}.png".format(timestr)
+    camera.export_to_png(filepath)
+
+    return filepath
