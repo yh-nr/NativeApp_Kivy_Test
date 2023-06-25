@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = My Application
+title = Yakiniku Classification
 
 # (str) Package name
-package.name = show.randomimage
+package.name = class.yakiniku
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.yh_nr.kivyapps
@@ -29,7 +29,7 @@ source.include_exts = py,png,jpg,kv,atlas
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1
+version = 0.11
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = Python3, kivy==2.1.0, cython, japanize_kivy, opencv-python, plyer, pyjnius
+requirements = Python3, kivy==2.1.0, cython, japanize_kivy, opencv-python, plyer, pyjnius, numpy
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
