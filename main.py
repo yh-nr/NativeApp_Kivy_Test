@@ -1,26 +1,32 @@
-#-*- coding: utf-8 -*-
+#kivy関連import
+from kivy.app import App            
+from kivy.uix.widget import Widget
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.utils import platform
+from kivy.lang import Builder
+from kivy.properties import StringProperty
+from kivy.properties import ObjectProperty
+from kivy.resources import resource_add_path
 from kivy.config import Config
 Config.set('graphics', 'width', '480')
 Config.set('graphics', 'height', '960')
-
-from kivy.app import App
-from kivy.uix.widget import Widget
-from kivy.properties import StringProperty
-# from kivy.core.text import LabelBase, DEFAULT_FONT
-from kivy.resources import resource_add_path
-from random import randint
-from kivy.uix.boxlayout import BoxLayout
-
 import japanize_kivy
-from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.lang import Builder
+
+
+from random import randint
 import time
+
+import cv2
+from os.path import dirname, join
+
 from sub import savepic
-from kivy.utils import platform
+
 
 
 
 # カメラへのアクセス許可を要求する
+# 
 try:
     from android.permissions import request_permissions, Permission
     request_permissions([
@@ -29,6 +35,7 @@ try:
         ])
 except:
     pass
+
 
 # デフォルトに使用するフォントを変更する
 # resource_add_path('C:\Windows\Fonts')
@@ -49,41 +56,47 @@ class ImageWidget(Widget):
     def buttonRandom(self):
         self.source = f'00000{randint(1, 9)}.jpg'
 
-class Page1(Screen):
-    pass
-class Page2(Screen):
-    pass
-class ScreenManagement(ScreenManager):
-    pass
-
-
-class ZebraApp(App):
-    def __init__(self, **kwargs):
-        super(ZebraApp, self).__init__(**kwargs)
-        self.title = 'シマウマ画像表示'
-
-    def build(self):
-        sm = ScreenManager()
-        sm.add_widget(Page1(name='Page1'))
-        sm.add_widget(Page2(name='Page2'))
-        return sm
-
-
 
 
 
 class CameraClick(BoxLayout):
+    camera_ref = ObjectProperty(None)
     def capture(self):
         '''
         Function to capture the images and give them the names
         according to their captured time and date.
         '''
-        self_wig = Page2()
-        camera = self_wig.ids['camera']
+        # self_wig = Page2()
+        # print(App.root.ids)
+        # camera = Page2.ids['camera']
         timestr = time.strftime("%Y%m%d_%H%M%S")
 
-        savepic(camera, timestr)
+        print(self.camera_ref)
+        savepic(self.camera_ref, timestr)
         print("Captured")
 
-if __name__ == '__main__':
-    ZebraApp().run()
+
+
+class YakinikuApp(App):
+    def __init__(self, **kwargs):
+        super(Zebrav2App, self).__init__(**kwargs)
+        self.title = 'シマウマ画像表示'
+
+    # def build(self):
+    #     # sm = ScreenManager()
+    #     # sm.add_widget(Page1(name='Page1'))
+    #     # sm.add_widget(Page2(name='Page2'))
+    #     return Display()
+    
+    def switch2page(self, page_name):
+        sm = self.root.ids.sm
+        curdir = dirname(__file__)
+        print(join(curdir, f'{page_name}.kv'))
+        screen = Builder.load_file(join(curdir, f'{page_name}.kv'))
+        print(type(screen))
+        sm.switch_to(screen, direction='left')
+
+
+
+if __name__ == '__main__':                      #main.pyが直接実行されたら、、、という意味らしい
+    YakinikuApp().run()

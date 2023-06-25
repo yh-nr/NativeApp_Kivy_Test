@@ -1,89 +1,52 @@
-<ScreenManagement>:
-    transition: FadeTransition()
-    Page1:
-    Page2: 
-    
-<Page1>:
-    name: 'Page1'
-    ImageWidget:
-        id: iw_yakiniku
-        BoxLayout:
-            orientation: 'vertical'
-            size: root.size
-            Label:  
-                text:"焼き肉画像ランダム表示アプリ"
-                font_size: 30
-                size_hint_y: 0.1
-                canvas.before:
-                    Color:
-                        rgba: 0, 0, 0, 1 # 赤色を指定
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
 
-            Image:
-                source: iw_yakiniku.source
-            BoxLayout:
-                size_hint_y: 0.3
-                padding: 20,30,20,10
-                
-                Button:
-                    id: button1
-                    text: "初期画像"
-                    font_size: 30
-                    on_press: iw_yakiniku.buttonStarted()
-                Button:
-                    id: button2
-                    text: "ランダム表示"
-                    font_size: 30
-                    on_press: iw_yakiniku.buttonRandom()
-                Button:
-                    id: button3
-                    text: "ページ切替"
-                    font_size: 30
-                    on_press: app.root.current = 'Page2'
+BoxLayout:
+    orientation: 'vertical'
+    size: root.size
+    Label:
+        id: title_label
+        text:"焼き肉画像ランダム表示アプリ"
+        font_size: 30
+        size_hint_y: 0.1
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1 # 赤色を指定
+            Rectangle:
+                pos: self.pos
+                size: self.size
 
-<Page2>: 
-    name: 'Page2'
+    ScreenManager:
+        id: sm
+
     BoxLayout:
-        orientation: 'vertical'
-        size: root.size
-        Label:  
-            text:"カメラアプリ"
-            font_size: 30
-            size_hint_y: 0.1
-            canvas.before:
-                Color:
-                    rgba: 0, 0, 0, 1 # 赤色を指定
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
-        CameraClick:
-            id:cameraclick
-            orientation: 'vertical'
-            Camera:
-                id:camera
-                resolution: (-1, -1)
-                play: False
-            ToggleButton:
-                id:playb
-                text: 'Play'
-                on_press: camera.play = not camera.play
-                size_hint_y: None
-                height: '48dp'
-            Button:
-                id:capb
-                text: 'Capture'
-                size_hint_y: None
-                height: '48dp'
-                on_press: cameraclick.capture()
+        size_hint: 1, 0.2
+    
         Button:
-            id: button4
-            text: "ページ切替"
-            size_hint_y: 0.3
+            text: "Page1へ"
             font_size: 30
-            on_press: app.root.current = 'Page1'
+            on_press:
+                title_label.text = "焼き肉写真ランダム表示"
+                sm.transition = FadeTransition()
+                # sm.current = "Page1"
+                app.switch2page("Page1")
+        Button:
+            text: "Page2へ"
+            font_size: 30
+            on_press:
+                title_label.text = "カメラ動作テスト"
+                sm.transition = FadeTransition()
+                # sm.current = "Page2"
+                app.switch2page("Page2")
+        Button:
+            text: "Page3へ"
+            font_size: 30
+            on_press:
+                title_label.text = "OpenCVでカメラ動かす"
+                sm.transition = FadeTransition()
+                # sm.current = "Page3"
+                app.switch2page("Page3")
 
+ 
 <ImageWidget>:
     canvas.before:
         Color:
@@ -91,3 +54,34 @@
         Rectangle:
             pos: self.pos
             size: self.size
+
+
+
+<CameraClick>:
+    id:cameraclick
+    orientation: 'vertical'
+    camera_ref:camera_ref
+    BoxLayout:
+        orientation: 'vertical'
+        Camera:
+            id:camera_ref
+            resolution: (-1, -1)
+            play: False
+        BoxLayout:
+            size_hint_y: 0.3
+            padding: 20,30,20,10
+
+            ToggleButton:
+                id:playb
+                text: 'Play'
+                font_size: 30
+                on_press: root.ids.camera_ref.play = not root.ids.camera_ref.play
+                # size_hint_y: None
+                # # height: '48dp'
+            Button:
+                id:capb
+                text: 'Capture'
+                font_size: 30
+                # size_hint_y: None
+                # # height: '48dp'
+                on_press: cameraclick.capture()
