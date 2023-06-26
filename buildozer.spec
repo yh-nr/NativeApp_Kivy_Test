@@ -4,7 +4,7 @@
 title = Yakiniku Classification
 
 # (str) Package name
-package.name = class.yakiniku
+package.name = classification.yakiniku
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.yh_nr.kivyapps
@@ -104,7 +104,7 @@ android.permissions = WRITE_EXTERNAL_STORAGE,CAMERA
 #android.api = 31
 
 # (int) Minimum API your APK / AAB will support.
-#android.minapi = 21
+android.minapi = 22
 
 # (int) Android SDK version to use
 #android.sdk = 20
@@ -113,7 +113,7 @@ android.permissions = WRITE_EXTERNAL_STORAGE,CAMERA
 #android.ndk = 23b
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
-#android.ndk_api = 21
+android.ndk_api = 22
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
 #android.ndk_path =
