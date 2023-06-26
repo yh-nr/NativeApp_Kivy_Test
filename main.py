@@ -47,7 +47,7 @@ class YakinikuApp(App):
     #     self.title = 'シマウマ画像表示'
         
     def build(self, **kwargs):
-        pass
+        return AppFrame()
 
 
 if __name__ == '__main__':                      #main.pyが直接実行されたら、、、という意味らしい
