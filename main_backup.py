@@ -25,7 +25,7 @@ import time
 import cv2
 from os.path import dirname, join
 
-# from sub import savepic
+from sub import savepic
 
 
 
@@ -113,7 +113,7 @@ class CameraClick(BoxLayout):
         timestr = time.strftime("%Y%m%d_%H%M%S")
 
         print(self.camera_ref)
-        # filepath = savepic(self.camera_ref, timestr)
+        filepath = savepic(self.camera_ref, timestr)
         print(f"Captured ({filepath})")
 
 
