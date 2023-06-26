@@ -31,7 +31,6 @@ from sub import savepic
 
 
 # カメラへのアクセス許可を要求する
-# 
 try:
     from android.permissions import request_permissions, Permission
     request_permissions([
@@ -119,28 +118,35 @@ class CameraClick(BoxLayout):
 
 
 
-class YakinikuApp(App):
-    def __init__(self, **kwargs):
-        super(YakinikuApp, self).__init__(**kwargs)
-        self.title = 'シマウマ画像表示'
 
-    def build(self):
-        page_name = 'Page1'
-        sm = self.root.ids.sm
-        curdir = dirname(__file__)
-        # print(join(curdir, f'{page_name}.kv'))
-        screen = Builder.load_file(join(curdir, f'{page_name}.kv'))
-        # print(type(screen))
-        sm.switch_to(screen)
-        # return Display()
+class AppFrame(BoxLayout):
+    screen_manager = ObjectProperty(None)
     
     def switch2page(self, page_name):
-        sm = self.root.ids.sm
+        sm = self.screen_manager
         curdir = dirname(__file__)
         # print(join(curdir, f'{page_name}.kv'))
         screen = Builder.load_file(join(curdir, f'{page_name}.kv'))
         # print(type(screen))
         sm.switch_to(screen, direction='left')
+
+
+
+class YakinikuApp(App):
+    def __init__(self, **kwargs):
+        super(YakinikuApp, self).__init__(**kwargs)
+        self.title = 'シマウマ画像表示'
+        
+    # def build(self, **kwargs):
+    #     print('build')
+    #     page_name = 'Page1'
+    #     sm = AppFrame.screen_manager
+    #     curdir = dirname(__file__)
+    #     # print(join(curdir, f'{page_name}.kv'))
+    #     screen = Builder.load_file(join(curdir, f'{page_name}.kv'))
+    #     # print(type(screen))
+    #     sm.switch_to(screen)
+    #     # return Display()
 
 
 

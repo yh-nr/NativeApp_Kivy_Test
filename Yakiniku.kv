@@ -1,8 +1,14 @@
 #: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#: import Builder kivy.lang.Builder
 
-BoxLayout:
+# Builder.load_file('DefaultPage.kv')
+#:include DefaultPage.kv
+
+AppFrame:
+
+<AppFrame>:
+    screen_manager: sm
     orientation: 'vertical'
-    size: root.size
     Label:
         id: title_label
         text:"焼き肉画像ランダム表示アプリ"
@@ -17,6 +23,8 @@ BoxLayout:
 
     ScreenManager:
         id: sm
+        DefaultPage:
+            name:'DefaultPage'
 
     BoxLayout:
         size_hint: 1, 0.2
@@ -28,7 +36,7 @@ BoxLayout:
                 title_label.text = "焼き肉写真ランダム表示"
                 sm.transition = FadeTransition()
                 # sm.current = "Page1"
-                app.switch2page("Page1")
+                root.switch2page("Page1")
         Button:
             text: "Page2へ"
             font_size: 30
@@ -36,7 +44,7 @@ BoxLayout:
                 title_label.text = "カメラ動作テスト"
                 sm.transition = FadeTransition()
                 # sm.current = "Page2"
-                app.switch2page("Page2")
+                root.switch2page("Page2")
         Button:
             text: "Page3へ"
             font_size: 30
@@ -44,7 +52,7 @@ BoxLayout:
                 title_label.text = "OpenCVでカメラ動かす"
                 sm.transition = FadeTransition()
                 # sm.current = "Page3"
-                app.switch2page("Page3")
+                root.switch2page("Page3")
 
  
 <ImageWidget>:
@@ -85,3 +93,4 @@ BoxLayout:
                 # size_hint_y: None
                 # # height: '48dp'
                 on_press: cameraclick.capture()
+    
