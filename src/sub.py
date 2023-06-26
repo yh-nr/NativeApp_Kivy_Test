@@ -1,6 +1,6 @@
 from kivy.utils import platform
 
-def savepic(camera, timestr):
+def SavePic(camera, timestr):
     if platform == 'android':
         from jnius import autoclass     
         # AndroidのJavaクラスにアクセス
