@@ -10,7 +10,7 @@ import cv2
 class CameraPreview(Widget):
     image_texture = ObjectProperty(None)
     image_capture = ObjectProperty(None)
-    # camera = ObjectProperty(None)
+    camera = ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(CameraPreview, self).__init__(**kwargs)
@@ -40,7 +40,7 @@ class CameraPreview(Widget):
             buf = cv2.flip(frame, 0)
             image_texture = Texture.create(size=(frame.shape[1], frame.shape[0]), colorfmt='bgr') 
             image_texture.blit_buffer(buf.tostring(), colorfmt='bgr', bufferfmt='ubyte')
-            camera = self.root.ids['camera']
+            #camera = self.root.ids['camera']
             camera.texture = image_texture
         
 
