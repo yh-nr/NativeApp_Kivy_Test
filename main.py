@@ -42,11 +42,7 @@ class AppFrame(BoxLayout):
 
 
 class YakinikuApp(App):
-    # def __init__(self, **kwargs):
-    #     super(YakinikuApp, self).__init__(**kwargs)
-    #     self.title = 'シマウマ画像表示'
-        
-    def build(self, **kwargs):
+    def build(self):
         return AppFrame()
 
 
