@@ -1,16 +1,16 @@
 Screen: 
     name: 'Page3'
-    BoxLayout:
+    CameraPreview:
+        camera:camera
         orientation: 'vertical'
         size: root.size
-        CameraPreview:
-            id: camera_preview
+        Image:
+            id: camera
             size: root.size
 
         ImageButton:
-            preview: camera_preview
             source: 'data/cameraicon.png'
-            size: 100, 100
-            center: root.width * 0.5, root.height * 0.5
+            size: 75, 75
+            center: root.width * 0.5, root.height * 0.1
         
 

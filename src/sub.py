@@ -11,7 +11,7 @@ def SavePic(camera, timestr):
         # ContentValues = autoclass('android.content.ContentValues')
         # PythonActivity = autoclass('org.kivy.android.PythonActivity')
 
-        print('###### SDK VERSION ######'), print(int(Build_VERSION.SDK_INT))
+        # print('###### SDK VERSION ######'), print(int(Build_VERSION.SDK_INT))
         app_storage_path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()
         # # Scoped Storageが使用可能なAndroidバージョンかをチェック
         # if int(Build_VERSION.SDK_INT) >= 29:
