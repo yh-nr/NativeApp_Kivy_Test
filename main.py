@@ -14,7 +14,7 @@ from os.path import dirname, join
 
 from src.Page1 import ImageWidget
 from src.Page2 import CameraClick
-#from src.Page3 import CameraPreview, ImageButton
+from src.Page3 import CameraPreview, ImageButton
 
 
 # カメラへのアクセス許可を要求する
@@ -43,6 +43,7 @@ class AppFrame(BoxLayout):
 
 class YakinikuApp(App):
     def build(self):
+        print('どうですか！！！')
         return AppFrame()
 
 
