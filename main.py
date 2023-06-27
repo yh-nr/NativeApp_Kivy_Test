@@ -42,6 +42,10 @@ class AppFrame(BoxLayout):
 
 
 class YakinikuApp(App):
+    def __init__(self, **kwargs):
+        super(YakinikuApp, self).__init__(**kwargs)
+        self.title = '焼き肉アプリ'
+
     def build(self):
         print('どうですか！！！')
         return AppFrame()
