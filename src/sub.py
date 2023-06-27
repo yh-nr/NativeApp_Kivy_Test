@@ -5,26 +5,26 @@ def SavePic(camera, timestr):
         from jnius import autoclass     
         # AndroidのJavaクラスにアクセス
         Environment = autoclass('android.os.Environment')
-        Build_VERSION = autoclass('android.os.Build$VERSION')
-        Context = autoclass('android.content.Context')
-        MediaStore = autoclass('android.provider.MediaStore')
-        ContentValues = autoclass('android.content.ContentValues')
-        PythonActivity = autoclass('org.kivy.android.PythonActivity')
+        # Build_VERSION = autoclass('android.os.Build$VERSION')
+        # Context = autoclass('android.content.Context')
+        # MediaStore = autoclass('android.provider.MediaStore')
+        # ContentValues = autoclass('android.content.ContentValues')
+        # PythonActivity = autoclass('org.kivy.android.PythonActivity')
 
         print('###### SDK VERSION ######'), print(int(Build_VERSION.SDK_INT))
+        app_storage_path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()
+        # # Scoped Storageが使用可能なAndroidバージョンかをチェック
+        # if int(Build_VERSION.SDK_INT) >= 29:
+        #     # アプリの外部ファイルディレクトリへのパスを取得
+        #     # app_storage_path = PythonActivity.mActivity.getExternalFilesDir(None).getAbsolutePath()
+        #     content_resolver = PythonActivity.mActivity.getContentResolver()
+        #     values = ContentValues()
+        #     image_uri = content_resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+        #     app_storage_path = image_uri.getPath()
 
-        # Scoped Storageが使用可能なAndroidバージョンかをチェック
-        if int(Build_VERSION.SDK_INT) >= 29:
-            # アプリの外部ファイルディレクトリへのパスを取得
-            # app_storage_path = PythonActivity.mActivity.getExternalFilesDir(None).getAbsolutePath()
-            content_resolver = PythonActivity.mActivity.getContentResolver()
-            values = ContentValues()
-            image_uri = content_resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
-            app_storage_path = image_uri.getPath()
-
-        else:
-            # Android 9以前の場合、従来のストレージアクセスを利用
-            app_storage_path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()
+        # else:
+        #     # Android 9以前の場合、従来のストレージアクセスを利用
+        #     app_storage_path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()
     elif platform == 'win':   
         import ctypes
         import os

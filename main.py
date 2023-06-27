@@ -22,7 +22,8 @@ try:
     from android.permissions import request_permissions, Permission
     request_permissions([
         Permission.CAMERA,
-        Permission.WRITE_EXTERNAL_STORAGE
+        Permission.WRITE_EXTERNAL_STORAGE,
+        Permission.READ_EXTERNAL_STORAGE
         ])
 except:
     print('ここは毎回実行されてる？？？(permissionのexcept)')
@@ -35,9 +36,7 @@ class AppFrame(BoxLayout):
     def switch2page(self, page_name):
         sm = self.screen_manager
         curdir = dirname(__file__)
-        # print(join(curdir, f'{page_name}.kv'))
         screen = Builder.load_file(join(curdir, f'src/{page_name}.kv'))
-        # print(type(screen))
         sm.switch_to(screen, direction='left')
 
 
