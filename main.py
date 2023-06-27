@@ -2,7 +2,7 @@
 from kivy.app import App            
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
-#from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty
 
 from kivy.config import Config
 Config.set('graphics', 'width', '480')
@@ -14,7 +14,7 @@ from os.path import dirname, join
 
 from src.Page1 import ImageWidget
 from src.Page2 import CameraClick
-from src.Page3 import CameraPreview, ImageButton
+#from src.Page3 import CameraPreview, ImageButton
 
 
 # カメラへのアクセス許可を要求する
