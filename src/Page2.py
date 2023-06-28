@@ -16,7 +16,7 @@ class CameraClick(BoxLayout):
         print(message=f"Captured ({filepath})")
 
 
-def show_notification(self, message, *args):
+def show_notification(message):
         notification.notify(
             title='My Notification',
             message=message,
