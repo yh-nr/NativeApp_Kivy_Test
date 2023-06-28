@@ -1,5 +1,8 @@
 Screen: 
     name: 'Page2'
+    on_pre_leave:
+        camera_ref.play = False
+        print("カメラ停止！！！！")
     CameraClick:
         id:cameraclick
         orientation: 'vertical'

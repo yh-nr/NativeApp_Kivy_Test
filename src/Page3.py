@@ -6,10 +6,11 @@ from kivy.properties import ObjectProperty
 from kivy.graphics.texture import Texture
 from kivy.clock import Clock
 from kivy.uix.behaviors import ButtonBehavior
+from os.path import dirname, join
 import cv2
 
 
-class CameraPreview(BoxLayout):
+class CameraPreview(Widget):
     image_texture = ObjectProperty(None)
     image_capture = ObjectProperty(None)
     camera = ObjectProperty(None)
@@ -44,6 +45,14 @@ class CameraPreview(BoxLayout):
             image_texture.blit_buffer(buf.tostring(), colorfmt='bgr', bufferfmt='ubyte')
             # camera = self.ids.camera
             self.camera.texture = image_texture
+
+
+    def camera_release(self):
+        Clock.unschedule(self.update)
+        try:self.image_capture.release()
+        except:pass
+        global Flg
+        Flg = False
         
 
 
