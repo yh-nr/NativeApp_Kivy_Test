@@ -1,4 +1,5 @@
 from kivy.utils import platform
+from os.path import dirname, join
 
 def SavePic(camera, timestr):
     if platform == 'android':
@@ -27,7 +28,6 @@ def SavePic(camera, timestr):
         #     app_storage_path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()
     elif platform == 'win':   
         import ctypes
-        from os.path import dirname, join
 
         # CSIDL_MYPICTURES の値は 39
         CSIDL_MYPICTURES = 39

@@ -38,6 +38,9 @@ class CameraPreview(Widget):
     def update(self, dt):
         # フレームを読み込み
         
+        print('update関数は動いている')
+        print(f'videocaptureがopenかどうか：{self.image_capture.isOpened()}')
+
         ret, frame = self.image_capture.read()
         if ret:
             buf = cv2.flip(frame, 0)
@@ -45,7 +48,7 @@ class CameraPreview(Widget):
             image_texture.blit_buffer(buf.tostring(), colorfmt='bgr', bufferfmt='ubyte')
             # camera = self.ids.camera
             self.camera.texture = image_texture
-            print('update動作確認！！！')
+            print('update動作確認2！！！')
 
 
     def camera_release(self):
