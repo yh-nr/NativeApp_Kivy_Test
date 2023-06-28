@@ -9,7 +9,7 @@ import cv2
 
 class CameraPreview(Widget):
     image_texture = ObjectProperty(None)
-    image_capture = ObjectProperty(None)
+    #image_capture = ObjectProperty(None)
     camera = ObjectProperty(None)
 
     def __init__(self, **kwargs):
