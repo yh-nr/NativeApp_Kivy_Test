@@ -27,7 +27,7 @@ def SavePic(camera, timestr):
         #     app_storage_path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath()
     elif platform == 'win':   
         import ctypes
-        import os
+        from os.path import dirname, join
 
         # CSIDL_MYPICTURES の値は 39
         CSIDL_MYPICTURES = 39
@@ -43,7 +43,7 @@ def SavePic(camera, timestr):
         # パスを取得
         app_storage_path = buf.value
     
-    filepath = os.path.join(app_storage_path, f"IMG_{timestr}.png")
+    filepath = join(app_storage_path, 'YakinikuApp', f"IMG_{timestr}.png")
     camera.export_to_png(filepath)
 
     return filepath

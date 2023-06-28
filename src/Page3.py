@@ -45,6 +45,7 @@ class CameraPreview(Widget):
             image_texture.blit_buffer(buf.tostring(), colorfmt='bgr', bufferfmt='ubyte')
             # camera = self.ids.camera
             self.camera.texture = image_texture
+            print('update動作確認！！！')
 
 
     def camera_release(self):
