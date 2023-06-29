@@ -3,6 +3,7 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
+from plyer import notification
 
 from kivy.config import Config
 Config.set('graphics', 'width', '480')
