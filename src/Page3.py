@@ -30,6 +30,7 @@ class CameraPreview(Widget):
             self.image_capture = cv2.VideoCapture(0)
             print(self.image_capture)
             Clock.schedule_interval(self.update, 1.0 / 30)
+            app.show_toast(f'videocaptureがopenかどうか：{self.image_capture.isOpened()}')
         else:
             Clock.unschedule(self.update)
             self.image_capture.release()
