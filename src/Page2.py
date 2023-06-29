@@ -12,4 +12,4 @@ class CameraClick(BoxLayout):
         timestr = time.strftime("%Y%m%d_%H%M%S")
         filepath = SavePic(self.camera_ref, timestr)
         message = f"Captured ({filepath})"
-        app.show_notification(message=message)
+        app.show_toast(message=message)
