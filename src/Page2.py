@@ -21,5 +21,6 @@ class CameraClick(BoxLayout):
                 title='My Notification',
                 message=message,
                 app_icon='',
-                timeout=10,
+                timeout=15,
+                toast=True
             )
