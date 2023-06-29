@@ -47,7 +47,7 @@ class YakinikuApp(App):
         self.title = '焼き肉アプリ'
 
     def build(self):
-        print('どうですか！！！')
+        app.show_toast('ビルドどうですか！！！')
         return AppFrame()
 
 
