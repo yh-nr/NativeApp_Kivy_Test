@@ -2,7 +2,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
 import time
 
-from .sub import SavePic
+from .func import SavePic, show_toast
 
 
 class CameraClick(BoxLayout):
@@ -12,4 +12,4 @@ class CameraClick(BoxLayout):
         timestr = time.strftime("%Y%m%d_%H%M%S")
         filepath = SavePic(self.camera_ref, timestr)
         message = f"Captured ({filepath})"
-        app.show_toast(message=message)
+        show_toast(message=message)

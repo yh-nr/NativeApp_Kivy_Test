@@ -3,7 +3,6 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
-from plyer import notification
 
 from kivy.config import Config
 Config.set('graphics', 'width', '480')
@@ -16,6 +15,7 @@ from os.path import dirname, join
 from src.Page1 import ImageWidget
 from src.Page2 import CameraClick
 from src.Page3 import CameraPreview, ImageButton
+from src.func import show_toast
 
 
 # カメラへのアクセス許可を要求する
@@ -47,16 +47,9 @@ class YakinikuApp(App):
         self.title = '焼き肉アプリ'
 
     def build(self):
-        app.show_toast('ビルドどうですか！！！')
+        show_toast('ビルドどうですか！！！')
         return AppFrame()
 
-
-    def show_toast(self, message):
-            notification.notify(
-                message=message,
-                timeout=15,
-                toast=True
-            )
 
 
 if __name__ == '__main__':                      #main.pyが直接実行されたら、、、という意味らしい

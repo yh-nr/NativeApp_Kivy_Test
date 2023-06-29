@@ -1,5 +1,6 @@
 from kivy.utils import platform
 from os.path import dirname, join
+from plyer import notification
 
 def SavePic(camera, timestr):
     if platform == 'android':
@@ -48,3 +49,11 @@ def SavePic(camera, timestr):
     camera.export_to_png(filepath)
 
     return filepath
+
+
+def show_toast(message):
+        notification.notify(
+            message=message,
+            timeout=15,
+            toast=True
+        )
