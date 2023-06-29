@@ -14,7 +14,6 @@ class CameraClick(BoxLayout):
         filepath = SavePic(self.camera_ref, timestr)
         message = f"Captured ({filepath})"
         self.show_notification(message=message)
-        self.camera_release()
 
 
     def show_notification(self, message):
