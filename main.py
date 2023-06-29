@@ -50,6 +50,14 @@ class YakinikuApp(App):
         return AppFrame()
 
 
+    def show_toast(self, message):
+            notification.notify(
+                message=message,
+                timeout=15,
+                toast=True
+            )
+
+
 if __name__ == '__main__':                      #main.pyが直接実行されたら、、、という意味らしい
     YakinikuApp().run()                         #
 
