@@ -43,7 +43,8 @@ def SavePic(camera, timestr):
         # パスを取得
         app_storage_path = buf.value
     
-    filepath = join(app_storage_path, 'YakinikuApp', f"IMG_{timestr}.png")
+#    filepath = join(app_storage_path, 'YakinikuApp', f"IMG_{timestr}.png")
+    filepath = join(app_storage_path f"IMG_{timestr}.png")
     camera.export_to_png(filepath)
 
     return filepath
