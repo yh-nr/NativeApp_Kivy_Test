@@ -1,6 +1,5 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
-from plyer import notification
 import time
 
 from .sub import SavePic
