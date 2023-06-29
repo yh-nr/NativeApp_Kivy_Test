@@ -23,12 +23,12 @@ class CameraPreview(Widget):
         # Clock.schedule_interval(self.update, 1.0 / 1)
         pass
  
-    def play(self):
+    def play(self, camnum):
         global Flg
         Flg = not Flg
         print(Flg)
         if Flg == True:
-            self.image_capture = cv2.VideoCapture(0)
+            self.image_capture = cv2.VideoCapture(camnum)
             print(self.image_capture)
             Clock.schedule_interval(self.update, 1.0 / 30)
             show_toast(f'videocaptureがopenかどうか：{self.image_capture.isOpened()}')
