@@ -1,0 +1,29 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<AppFrame>:
+    orientation: 'vertical'
+    Label:
+        id: title_label
+        text:"kivyコードテストアプリ"
+        font_size: 30
+        size_hint_y: 0.1
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1 # 赤色を指定
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+        Label:
+            text:'こんにちは'
+            size:root.size
+        Button:
+            text:'こんにちは'
+            size:root.size
+            on_press:root.call_func()
+
+
+
