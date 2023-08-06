@@ -47,15 +47,12 @@ def get_settings_dict_win():
     return settings_dict
 
 def get_settings_dict_android():
-    AssetManager = autoclass('android.content.res.AssetManager')
-    Context = autoclass('android.content.Context')
-    # BufferedReader = autoclass('java.io.BufferedReader')
-    # InputStream = autoclass('java.io.InputStream')
-    # InputStreamReader = autoclass('java.io.InputStreamReader')
-
-    am = AssetManager().getAssets()
-    input_stream = am.open('cambuttons.json')
-    show_toast()
+    PythonActivity = autoclass('org.kivy.android.PythonActivity')
+    asset_manager = PythonActivity.mActivity.getAssets()
+    input_stream = asset_manager.open('cambuttons.json')
+    bytes_content = input_stream.read()
+    file_content = bytes_content.decode('utf-8')
+    show_toast(file_content)
     return
 
 
