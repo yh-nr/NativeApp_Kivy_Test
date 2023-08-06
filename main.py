@@ -33,34 +33,39 @@ def show_toast(message):
 
    
 def load_setting():
-    if platform == 'android':
-        setting_dict = get_settings_dict_android()
-        show_toast(setting_dict['btn0']['name'])
-    elif platform == 'win': 
-        setting_dict = get_settings_dict_win()
-        show_toast(setting_dict['btn0']['name'])
-
-def get_settings_dict_win():
-    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), r'.\assets\cambuttons.json')
+    path = r'./assets/cambuttons.json'
+    show_toast(path)
     with open(path, 'r', encoding='utf-8') as f:
         settings_dict = json.load(f)
     return settings_dict
+#     if platform == 'android':
+#         setting_dict = get_settings_dict_android()
+#         show_toast(setting_dict['btn0']['name'])
+#     elif platform == 'win': 
+#         setting_dict = get_settings_dict_win()
+#         show_toast(setting_dict['btn0']['name'])
 
-def get_settings_dict_android():
-    PythonActivity = autoclass('org.kivy.android.PythonActivity')
-    asset_manager = PythonActivity.mActivity.getAssets()
-    input_stream = asset_manager.open('cambuttons.json')
-    bytes_content = input_stream.read()
-    file_content = bytes_content.decode('utf-8')
-    show_toast(file_content)
-    return
+# def get_settings_dict_win():
+#     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), r'.\assets\cambuttons.json')
+#     with open(path, 'r', encoding='utf-8') as f:
+#         settings_dict = json.load(f)
+#     return settings_dict
+
+# def get_settings_dict_android():
+#     # PythonActivity = autoclass('org.kivy.android.PythonActivity')
+#     # asset_manager = PythonActivity.mActivity.getAssets()
+#     # input_stream = asset_manager.open('cambuttons.json')
+#     # bytes_content = input_stream.read()
+#     # file_content = bytes_content.decode('utf-8')
+#     # show_toast(file_content)
+#     return
 
 
 class AppFrame(BoxLayout): 
 
     def call_func(self):
-        show_toast('テスト')
-        load_setting()
+        show_toast(load_setting()['btn0']['name'])
+        
 
 
 
